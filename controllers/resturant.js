@@ -29,6 +29,7 @@ const restaurantDetails = asyncHandler(async (req, res, next) => {
   const resturant = await Resturant.find({ _id: id });
   const products = await Product.find({ restaurant_id: id });
   res.json({
+    success: "true",
     resturant: resturant,
     products: products,
   });
