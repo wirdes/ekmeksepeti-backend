@@ -26,7 +26,7 @@ const findRestaurantByCityPlateNumber = asyncHandler(async (req, res, next) => {
 
 const restaurantDetails = asyncHandler(async (req, res, next) => {
   const id = req.body.id || req.query.id;
-  const products = await Product.find({ restaurant_id: id });
+  const products = await Product.find({ _id: id });
   res.json({
     resturant: resturant,
     products: products,
