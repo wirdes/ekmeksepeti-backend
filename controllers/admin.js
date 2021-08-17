@@ -67,19 +67,7 @@ const tokenVerify = (req, res) => {
   });
 };
 
-const loguot = (req, res) => {
-  if (!isTokenIncluded(req)) {
-    return next(new CustomError("Giriş yapmadan burayı göremezsin", 401));
-  }
-  const accessToken = getAccessTokenFromHeader(req);
-  jwt.destroy(accessToken);
-  res.status(200).json({
-    success: true,
-  });
-};
-
 module.exports = {
-  loguot,
   register,
   login,
   tokenVerify,

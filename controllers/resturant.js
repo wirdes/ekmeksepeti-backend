@@ -1,16 +1,15 @@
 const Resturant = require("../models/Restaurant");
 const asyncHandler = require("express-async-handler");
-const CustomError = require("../helpers/errors/CustomError");
 const Product = require("../models/Product");
 
 const register = asyncHandler(async (req, res, next) => {
-  const { name, address, phone } = req.body;
+  const { name, address, phone, city, cityplateNumber } = req.body;
   const resturant = await Resturant.create({
     name,
     address,
     phone,
     city,
-    admin: "6093e642359268342ce3331b",
+    cityplateNumber,
   });
 
   res.json({
@@ -19,36 +18,23 @@ const register = asyncHandler(async (req, res, next) => {
   });
 });
 
-const findRestaurantByAdmin = asyncHandler(async (req, res, next) => {
-  const admin = req.body.id || req.query.id;
-  res.json(await Resturant.find({ admin: admin }));
-});
-
-//
-const findRestaurant = asyncHandler(async (req, res, next) => {
-  const admin = req.body.id || req.query.id;
-  const resturant = await Resturant.find({ admin: admin });
+const findRestaurantByCityPlateNumber = asyncHandler(async (req, res, next) => {
+  const plateNumber = req.body.plateNumber || req.query.plateNumber;
+  const resturant = await Resturant.find({ cityplateNumber: plateNumber });
   res.json(resturant);
 });
 
-const allResturant = asyncHandler(async (req, res, next) => {
-  res.json(await Resturant.find());
-});
-
 const restaurantDetails = asyncHandler(async (req, res, next) => {
-  const admin = req.body.id || req.query.id;
-  const resturant=await Resturant.find({ _id: admin });
-  const products=await Product.find({ restaurant_id: admin });
+  const id = req.body.id || req.query.id;
+  const products = await Product.find({ restaurant_id: id });
   res.json({
     resturant: resturant,
-    products:products
-  })
-  
+    products: products,
+  });
 });
 
 module.exports = {
-  allResturant,
   register,
-  findRestaurantByAdmin,
+  findRestaurantByCityPlateNumber,
   restaurantDetails,
 };

@@ -1,16 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const {
-  allResturant,
   register,
+  findRestaurantByCityPlateNumber,
   restaurantDetails,
-  findRestaurantByAdmin,
-  allResAndPro,
 } = require("../controllers/resturant");
 
 router.get("/restaurantDetails", restaurantDetails);
-router.get("/findRestaurantByAdmin", findRestaurantByAdmin);
-router.get("/allResturant", allResturant);
+router.get("/findRestaurantByCityPlateNumber", findRestaurantByCityPlateNumber);
 router.post("/register", register);
 
 module.exports = router;
