@@ -21,7 +21,7 @@ const register = asyncHandler(async (req, res, next) => {
 const findRestaurantByCityPlateNumber = asyncHandler(async (req, res, next) => {
   const plateNumber = req.body.plateNumber || req.query.plateNumber;
   const resturant = await Resturant.find({ cityplateNumber: plateNumber });
-  res.json(resturant);
+  res.json({ success: "true", data: resturant });
 });
 
 const restaurantDetails = asyncHandler(async (req, res, next) => {
