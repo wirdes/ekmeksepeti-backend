@@ -15,6 +15,7 @@ const add = asyncHandler(async (req, res, next) => {
   } = req.body;
 
   if (req.files === null) {
+      //starndart resimsiz
     const product = await Product.create({
       name,
       description,
@@ -27,7 +28,7 @@ const add = asyncHandler(async (req, res, next) => {
       restaurant_id,
     });
     res.json(product);
-    //starndart resimsiz
+  
   } else {
     const file = req.files.file;
 

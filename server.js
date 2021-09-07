@@ -31,6 +31,9 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 })
 app.use(customErrorHandler);
+
+
+
 app.listen(PORT, () => {
   console.log(`Uygulama Başlatıldı: http://localhost:${PORT}\n`);
 });

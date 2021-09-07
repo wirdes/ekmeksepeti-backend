@@ -24,6 +24,9 @@ const AdminSchema = new Schema({
     required: [true, "lütfen bir şifre giriniz."],
     select: false,
   },
+  address: {
+    type: [],
+  },
 });
 
 AdminSchema.methods.generateJwtFromUser = function () {

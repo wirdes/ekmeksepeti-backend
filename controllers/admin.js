@@ -35,6 +35,14 @@ const login = asyncHandler(async (req, res, next) => {
   }
   sendJwtToClient(user, res);
 });
+const addAddress = asyncHandler(async (req, res, next) => {
+  const { address, adminId } = req.body;
+
+  const user = await Admin.findById(adminId);
+  user.address = address;
+  user = await user.save();
+  return res.status(200).json({ succes: true, data: user });
+});
 
 const tokenVerify = (req, res) => {
   const { JWT_SECRET } = process.env;
@@ -71,4 +79,5 @@ module.exports = {
   register,
   login,
   tokenVerify,
+  addAddress,
 };
