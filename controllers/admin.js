@@ -38,7 +38,7 @@ const login = asyncHandler(async (req, res, next) => {
 const addAddress = asyncHandler(async (req, res, next) => {
   const { address, adminId } = req.body;
 
-  const user = await Admin.findById(adminId);
+  let user = await Admin.findById(adminId);
   user.address = address;
   user = await user.save();
   return res.status(200).json({ succes: true, data: user });
