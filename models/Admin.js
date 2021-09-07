@@ -25,7 +25,7 @@ const AdminSchema = new Schema({
     select: false,
   },
   address: {
-    type: [],
+    type: String,
   },
 });
 
