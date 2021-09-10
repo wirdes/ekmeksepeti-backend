@@ -15,7 +15,7 @@ const add = asyncHandler(async (req, res, next) => {
   } = req.body;
 
   if (req.files === null) {
-      //starndart resimsiz
+    //starndart resimsiz
     const product = await Product.create({
       name,
       description,
@@ -28,7 +28,6 @@ const add = asyncHandler(async (req, res, next) => {
       restaurant_id,
     });
     res.json(product);
-  
   } else {
     const file = req.files.file;
 
@@ -62,6 +61,11 @@ const update = asyncHandler(async (req, res, next) => {
     success: true,
   });
 });
+const get = asyncHandler(async (req, res, next) => {
+  const id = req.body.id || req.query.id;
+  const product = await Product.findById(id);
+  res.status(200).json({ success: true, data: product });
+});
 const del = asyncHandler(async (req, res, next) => {
   const id = req.body.id || req.query.id;
   await Product.findByIdAndDelete(id);
@@ -72,4 +76,5 @@ module.exports = {
   add,
   update,
   del,
+  get,
 };
