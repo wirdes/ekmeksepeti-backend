@@ -13,6 +13,11 @@ const add = asyncHandler(async (req, res, next) => {
 
 const get = asyncHandler(async (req, res, next) => {
   const id = req.body.id || req.query.id;
+  const order = await Orders.findById(id);
+  res.status(200).json({ success: true, data: order });
+});
+const getByUser = asyncHandler(async (req, res, next) => {
+  const id = req.body.id || req.query.id;
   const order = await Resturant.find({ userId: id });
   res.status(200).json({ success: true, data: order });
 });
@@ -20,4 +25,5 @@ const get = asyncHandler(async (req, res, next) => {
 module.exports = {
   add,
   get,
+  getByUser,
 };
