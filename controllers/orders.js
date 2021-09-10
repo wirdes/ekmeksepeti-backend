@@ -18,7 +18,7 @@ const get = asyncHandler(async (req, res, next) => {
 });
 const getByUser = asyncHandler(async (req, res, next) => {
   const id = req.body.id || req.query.id;
-  const order = await Resturant.find({ userId: id });
+  const order = await Orders.find({ userId: id });
   res.status(200).json({ success: true, data: order });
 });
 
