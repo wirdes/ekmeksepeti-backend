@@ -3,7 +3,7 @@ const Orders = require("../models/Orders");
 
 const add = asyncHandler(async (req, res, next) => {
   const { orderElements, userId } = req.body;
-  const product = await Product.create({
+  const product = await Orders.create({
     orderElements,
     userId,
     orderTime: new Date().toLocaleString(),
