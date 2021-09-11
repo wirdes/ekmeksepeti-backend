@@ -4,8 +4,13 @@ const Product = require("../models/Product");
 
 const add = asyncHandler(async (req, res, next) => {
   const { orderElements, userId, address, total } = req.body;
+  let orders = [];
+  for (let i = 0; i < orderElements.length; i++) {
+    const product = await Product.findById(orderElements[i]._id);
+    orders.push({ product, quantity: orderElements[i].quantity });
+  }
   const product = await Orders.create({
-    orderElements,
+    orderElements: orders,
     userId,
     address,
     total,
@@ -17,20 +22,8 @@ const add = asyncHandler(async (req, res, next) => {
 const get = asyncHandler(async (req, res, next) => {
   const id = req.body.id || req.query.id;
   const order = await Orders.findById(id);
-  let orders = [];
-  for (let i = 0; i < order.orderElements.length; i++) {
-    const product = await Product.findById(order.orderElements[i]._id);
-    orders.push({ product, quantity: order.orderElements[i].quantity });
-  }
-  let a = {
-    _id: order._id,
-    userId: order.userId,
-    address: order.address,
-    total: order.total,
-    orderTime: order.orderTime,
-    orderElements: orders,
-  };
-  res.status(200).json({ success: true, data: a });
+
+  res.status(200).json({ success: true, data: order });
 });
 const getByUser = asyncHandler(async (req, res, next) => {
   const id = req.body.id || req.query.id;
