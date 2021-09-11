@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Orders = require("../models/Orders");
+const Product = require("../models/Product");
 
 const add = asyncHandler(async (req, res, next) => {
   const { orderElements, userId, address, total } = req.body;
@@ -16,7 +17,20 @@ const add = asyncHandler(async (req, res, next) => {
 const get = asyncHandler(async (req, res, next) => {
   const id = req.body.id || req.query.id;
   const order = await Orders.findById(id);
-  res.status(200).json({ success: true, data: order });
+  let orders = [];
+  for (let i = 0; i < order.orderElements.length; i++) {
+    const product = await Product.findById(order.orderElements[i]._id);
+    orders.push({ product, quantity: order.orderElements[i].quantity });
+  }
+  let a = {
+    _id: order._id,
+    userId: order.userId,
+    address: order.address,
+    total: order.total,
+    orderTime: order.orderTime,
+    orderElements: orders,
+  };
+  res.status(200).json({ success: true, data: a });
 });
 const getByUser = asyncHandler(async (req, res, next) => {
   const id = req.body.id || req.query.id;
