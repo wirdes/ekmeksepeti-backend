@@ -43,6 +43,11 @@ const addAddress = asyncHandler(async (req, res, next) => {
   user = await user.save();
   return res.status(200).json({ succes: true, data: user });
 });
+const updateProfile = asyncHandler(async (req, res, next) => {
+  const {  adminId } = req.body;
+  let user = await Admin.findById(adminId);
+  return res.status(200).json({ succes: true, data: user });
+});
 
 const tokenVerify = (req, res) => {
   const { JWT_SECRET } = process.env;
@@ -80,4 +85,5 @@ module.exports = {
   login,
   tokenVerify,
   addAddress,
+  updateProfile,
 };
