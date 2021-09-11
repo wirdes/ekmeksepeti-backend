@@ -2,11 +2,12 @@ const asyncHandler = require("express-async-handler");
 const Orders = require("../models/Orders");
 
 const add = asyncHandler(async (req, res, next) => {
-  const { orderElements, userId, address } = req.body;
+  const { orderElements, userId, address, total } = req.body;
   const product = await Orders.create({
     orderElements,
     userId,
     address,
+    total,
     orderTime: new Date().toLocaleString(),
   });
   res.json(product);

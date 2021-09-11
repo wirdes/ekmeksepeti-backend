@@ -5,6 +5,7 @@ const OrdersSchema = new Schema({
   orderElements: [],
   orderTime: String,
   address: String,
+  total: String,
   userId: {
     type: Schema.ObjectId,
     required: true,
