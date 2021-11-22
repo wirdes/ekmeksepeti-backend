@@ -37,7 +37,7 @@ router.get(
       res.send(
         `${a.join(
           " "
-        )}<p>deneme</p><a href="www.merterim.com/takip>SİTEYE DÖN</a><br>`
+        )}<a href="www.merterim.com/takip> <p>deneme</p></a>`
       );
     }
   })
