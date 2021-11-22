@@ -34,7 +34,7 @@ router.get(
     if (req.query.link != undefined) {
       const a = await getData(req.query.link);
 
-      res.send(`${a.join(" ")}<br><a href="merterim.com/takip>SİTEYE DÖN</a><br>`)
+      res.send(`${a.join(" ")}asd<br><a href="merterim.com/takip>SİTEYE DÖN</a><br>`)
     }
   })
 );
