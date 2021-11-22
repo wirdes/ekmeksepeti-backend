@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const axios = require("axios");
 const wallets = require("./wallet.json");
 const asyncHandler = require("express-async-handler");
@@ -29,7 +28,7 @@ app.get(
     res.json({ succes: "true" });
   })
 );
-app.get(
+router.get(
   "/test",
   asyncHandler(async (req, res, next) => {
     if (req.query.link != undefined) {
