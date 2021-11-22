@@ -6,19 +6,19 @@ const asyncHandler = require("express-async-handler");
 
 const controlWallet = (wallets, data, link) => {
   let say = 0;
-  wallets.forEach((wallet) => {
-    if (data.search("0x") > 0) {
-      say++;
-    }
-  });
+
+  if (data.search("0x") > 0) {
+    say++;
+  }
+
   let winner = [];
   wallets.forEach((wallet) => {
     if (data.search(wallet.wallet) > 0) {
       winner.push(wallet.name);
     }
   });
-  if (say < 20) {
-    return ["site kontrol ediniz.", link, "hatalı"];
+  if (say < 0) {
+    return ["site kontrol ediniz.", link, "hatalı", say];
   }
   if (winner.length > 0) {
     return winner;
