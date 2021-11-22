@@ -11,7 +11,7 @@ dotenv.config({
   path: "./config/env/config.env",
 });
 
-connectDatabase();
+//connectDatabase();
 var corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200,

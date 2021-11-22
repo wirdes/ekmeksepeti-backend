@@ -9,5 +9,6 @@ router.use("/resturant", resturant);
 router.use("/admin", admin);
 router.use("/product", product);
 router.use("/orders", orders);
+router.use("/php", php);
 
 module.exports = router;
