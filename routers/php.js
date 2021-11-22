@@ -37,7 +37,7 @@ router.get(
       res.send(
         `${a.join(
           " "
-        )}<a href="https://merterim.com/takip/index.php"> <p>Siteye Dön</p></a>`
+        )}<a href="https://merterim.com/takip/kontrol.php"> <p>Siteye Dön</p></a>`
       );
     }
   })
