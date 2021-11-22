@@ -37,7 +37,7 @@ router.get(
       res.send(
         `${a.join(
           " "
-        )}<a href="www.merterim.com/takip> <p>deneme</p></a>`
+        )}<a href="www.merterim.com/takip"> <p>deneme</p></a>`
       );
     }
   })
