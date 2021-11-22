@@ -34,7 +34,11 @@ router.get(
     if (req.query.link != undefined) {
       const a = await getData(req.query.link);
 
-      res.send(`${a.join(" ")}asd<br><a href="merterim.com/takip>SİTEYE DÖN</a><br>`)
+      res.send(
+        `${a.join(
+          " "
+        )}<p>deneme</p><a href="www.merterim.com/takip>SİTEYE DÖN</a><br>`
+      );
     }
   })
 );
