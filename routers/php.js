@@ -22,7 +22,7 @@ const getData = async (link) => {
 
   return controlWallet(wallets, data);
 };
-app.get(
+router.get(
   "/",
   asyncHandler(async (req, res, next) => {
     res.json({ succes: "true" });
