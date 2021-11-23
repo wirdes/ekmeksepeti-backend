@@ -21,6 +21,7 @@ function isAlphaNumeric(str) {
 }
 const controlWallet = (wallets, data, link) => {
   let allwallets = [];
+  let allwalletsLower = [];
 
   data1 = data.split(" ");
   data1.forEach((wallet) => {
@@ -38,12 +39,16 @@ const controlWallet = (wallets, data, link) => {
     }
     if (abc.length == 42) {
       allwallets.push(abc.join(""));
+      allwalletsLower.push(abc.join("").toLowerCase());
     }
   });
 
   let winner = [];
   wallets.forEach((wallet) => {
-    if (allwallets.join("").search(wallet.wallet) > 0) {
+    if (
+      allwallets.join("").search(wallet.wallet) > 0 ||
+      allwalletsLower.join("").search(wallet.wallet.toLowerCase()) > 0
+    ) {
       a = data.search(wallet.wallet);
       winner.push(wallet.name);
     }
